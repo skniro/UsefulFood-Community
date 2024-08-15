@@ -1,11 +1,15 @@
 package mods.usefulfood.items;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.stats.StatBase;
+import net.minecraft.stats.StatList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class ItemTea extends ItemBottle {
@@ -17,22 +21,31 @@ public class ItemTea extends ItemBottle {
 		this.hearts = hearts;
 	}
 	
-	@Override
-	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
-		if (!player.capabilities.isCreativeMode) {
-			--itemstack.stackSize;
-			if(itemstack.stackSize > 0) {
-				player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
-			}
-		}
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase playerIn)
+    {
+        EntityPlayer player = (EntityPlayer) playerIn;
+		if (!player.capabilities.isCreativeMode)
+        {
+            --stack.stackSize;
+        }
 
-		if (!world.isRemote) {
-			player.heal(hearts);
-			if(removepoison) {
-				player.removePotionEffect(Potion.poison.id);
-			}
+        player.getFoodStats().addStats(this, stack);
+
+        if (!player.capabilities.isCreativeMode)
+        {
+            if (stack.stackSize <= 0)
+            {
+                return new ItemStack(Items.GLASS_BOTTLE);
+            }
+
+            player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
+        }
+        
+        playerIn.heal(hearts);
+		if(removepoison) {
+			playerIn.removePotionEffect(MobEffects.POISON);
 		}
-		
-		return itemstack.stackSize <= 0 ? new ItemStack(Items.glass_bottle) : itemstack;
-	}
+        worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
+        return stack;
+    }
 }

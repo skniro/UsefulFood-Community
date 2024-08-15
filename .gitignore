@@ -2,9 +2,16 @@ bin/
 build/
 distribute/
 eclipse/
+run/
 .settings/
 .gradle/
 .metadata/
 .project
 .classpath
 .project
+*.launch
+*Thumbs.db
+/UsefulFood-1.8.iml
+/UsefulFood-1.8.ipr
+/UsefulFood-1.8.iws
+/.idea/

@@ -1,8 +1,8 @@
 package mods.usefulfood.items;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -12,8 +12,9 @@ public class ItemFoodStick extends ItemFoodUF {
 		this.setMaxStackSize(1);
 	}
 
-	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
-		super.onEaten(itemstack, world, player);
-		return new ItemStack(Items.stick);
-	}
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase playerIn)
+    {
+        super.onItemUseFinish(stack, worldIn, playerIn);
+        return new ItemStack(Items.STICK);
+    }
 }

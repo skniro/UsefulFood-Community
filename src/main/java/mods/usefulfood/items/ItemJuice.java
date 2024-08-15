@@ -1,11 +1,16 @@
 package mods.usefulfood.items;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.stats.StatList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class ItemJuice extends ItemBottle {
@@ -13,22 +18,31 @@ public class ItemJuice extends ItemBottle {
 	public ItemJuice(String name, int var2, float var3) {
 		super(name, var2, var3);
 	}
+	
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase playerIn)
+    {
+        EntityPlayer player = (EntityPlayer) playerIn;
+		if (!player.capabilities.isCreativeMode)
+        {
+            --stack.stackSize;
+        }
 
-	public ItemStack onEaten(ItemStack itemstack, World world,
-			EntityPlayer player) {
-		if (!player.capabilities.isCreativeMode) {
-			--itemstack.stackSize;
-			if (itemstack.stackSize > 0) {
-				player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
-			}
-		}
+        player.addStat(StatList.getObjectUseStats(this));
 
-		if (!world.isRemote) {
-			player.getFoodStats().addStats(foodlevel, saturation);
-			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 30*20, 0));
-		}
+        if (!player.capabilities.isCreativeMode)
+        {
+            if (stack.stackSize <= 0)
+            {
+                return new ItemStack(Items.GLASS_BOTTLE);
+            }
 
-		return itemstack.stackSize <= 0 ? new ItemStack(Items.glass_bottle)
-				: itemstack;
-	}
+            player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
+        }
+        
+        playerIn.addPotionEffect(new PotionEffect(MobEffects.SPEED, 30*20, 0));
+        player.getFoodStats().addStats(this, stack);
+        worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
+        this.onFoodEaten(stack, worldIn, player);
+        return stack;
+    }
 }

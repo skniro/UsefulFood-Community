@@ -1,10 +1,12 @@
 package mods.usefulfood.items;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class ItemBowl extends ItemFoodUF {
@@ -16,14 +18,13 @@ public class ItemBowl extends ItemFoodUF {
 		this.setMaxStackSize(1);
 		this.removepoison = removepoison;
 	}
-	
-	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
-		super.onEaten(itemstack, world, player);
-		if (!world.isRemote){
-			if(removepoison) {
-				player.removePotionEffect(Potion.poison.id);
-			}
+
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
+    {
+        super.onItemUseFinish(stack, worldIn, entityLiving);
+        if(removepoison) {
+			entityLiving.removePotionEffect(new PotionEffect(MobEffects.POISON).getPotion());
 		}
-		return new ItemStack(Items.bowl);
-	}
+        return new ItemStack(Items.BOWL);
+    }
 }
