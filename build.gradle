@@ -89,7 +89,9 @@ uploadArchives {
     repositories {
         mavenDeployer {
             // Configure Maven repository URL
-            repository(url: uri(System.getenv("MAVEN_URL")))
+            if (System.getenv("MAVEN_URL")) {
+                repository(url: uri(System.getenv("MAVEN_URL")))
+            }
 
             // Set POM metadata
             pom.groupId = project.maven_group
