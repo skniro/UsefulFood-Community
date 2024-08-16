@@ -5,9 +5,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -27,7 +29,8 @@ public class SpecialCake extends BlockCakeUF {
 		this.setSoundType(SoundType.CLOTH);
 		this.name = name;
 		this.setUnlocalizedName(name);
-		GameRegistry.registerBlock(this, name);
+        ResourceLocation resourceLocation = new ResourceLocation("UsefulFood", name);
+		GameRegistry.register(this, resourceLocation);
 	}
 
 	/**
@@ -55,8 +58,11 @@ public class SpecialCake extends BlockCakeUF {
     }
 	
     @SideOnly(Side.CLIENT)
-    public Item getItem(World worldIn, BlockPos pos)
+    public Item getItem()
     {
-    	return GameRegistry.findItem("UsefulFood", name.replace("Block", ""));
+        String itemName = name.replace("Block", "");
+        ResourceLocation resourceLocation = new ResourceLocation("UsefulFood", itemName);
+
+        return ForgeRegistries.ITEMS.getValue(resourceLocation);
     }
 }

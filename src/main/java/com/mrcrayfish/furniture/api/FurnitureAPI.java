@@ -67,8 +67,8 @@ public class FurnitureAPI
     {
       ItemStack validItemStack = ((ItemData)printerRecipes.get(i)).getInput();
       if ((validItemStack.getItem() == itemStack.getItem()) && 
-        (validItemStack.getItemDamage() == itemStack.getItemDamage()) && 
-        (itemStack.stackSize == 1)) {
+        (validItemStack.getItemDamage() == itemStack.getItemDamage()) &&
+              itemStack.getCount() == 1) {
         return (ItemData)printerRecipes.get(i);
       }
     }

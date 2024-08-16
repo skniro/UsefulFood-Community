@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "UsefulFood", name = "UsefulFood", version = "1.5.0")
+@Mod(modid = "usefulfood", name = "UsefulFood", version = "1.5.0")
 public class UF {
 	@SidedProxy(clientSide="mods.usefulfood.UFClient", serverSide="mods.usefulfood.UFServer")
 	public static UFServer proxy;

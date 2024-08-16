@@ -27,7 +27,7 @@ group= "${project.maven_group}"
 archivesBaseName = "${project.archives_base_name}"
 
 minecraft {
-    version = "1.9.4-12.17.0.2317-1.9.4"
+    version = "1.11.2-13.20.1.2588"
     runDir = "run"
 
     // the mappings can be changed at any time, and must be in the following format.
@@ -35,7 +35,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20160518"
+    mappings = "snapshot_20161220"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
@@ -83,28 +83,16 @@ processResources
             }
         }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.maven_group
-            artifactId project.archivesBaseName
-            version project.version
-            artifact jar
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+uploadArchives {
     repositories {
-        if (System.getenv("MAVEN_URL")) {
-            maven {
-                name = 'mavenLocal2'
-                url System.getenv("MAVEN_URL")
-                // Add repositories to publish to here.
-                // Notice: This block does NOT have the same function as the block in the top level.
-                // The repositories here will be used for publishing your artifact, not for
-                // retrieving dependencies.
-            }
+        mavenDeployer {
+            // Configure Maven repository URL
+            repository(url: uri(System.getenv("MAVEN_URL")))
+
+            // Set POM metadata
+            pom.groupId = project.maven_group
+            pom.artifactId = project.archivesBaseName
+            pom.version = project.version
         }
     }
 }
-

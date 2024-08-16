@@ -24,14 +24,14 @@ public class ItemJuice extends ItemBottle {
         EntityPlayer player = (EntityPlayer) playerIn;
 		if (!player.capabilities.isCreativeMode)
         {
-            --stack.stackSize;
+            stack.shrink(1);
         }
 
         player.addStat(StatList.getObjectUseStats(this));
 
         if (!player.capabilities.isCreativeMode)
         {
-            if (stack.stackSize <= 0)
+            if (stack.getCount() <= 0)
             {
                 return new ItemStack(Items.GLASS_BOTTLE);
             }

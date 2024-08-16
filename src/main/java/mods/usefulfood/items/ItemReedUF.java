@@ -5,6 +5,7 @@ import mods.usefulfood.UF;
 import mods.usefulfood.UFItem2Model;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemReedUF extends ItemBlock
@@ -17,7 +18,8 @@ public class ItemReedUF extends ItemBlock
 		this.setCreativeTab(UF.tabUsefulFood);
 		this.setUnlocalizedName(name);
 		this.name = name;
-		GameRegistry.registerItem(this, name);
+		ResourceLocation resourceLocation = new ResourceLocation("UsefulFood", name);
+		GameRegistry.register(this, resourceLocation);
 		UF.getItem2Models().add(new UFItem2Model(this, name));
 	}
 }
