@@ -19,19 +19,19 @@ public class UFRecipes
 
 	private void AddRecipes() 
 	{
-		GameRegistry.addRecipe(new ItemStack(UF.items.porkwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_PORKCHOP });
-		GameRegistry.addRecipe(new ItemStack(UF.items.steakwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_BEEF });
-		GameRegistry.addRecipe(new ItemStack(UF.items.fishwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_FISH });
-		GameRegistry.addRecipe(new ItemStack(UF.items.chickenwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_CHICKEN });
+		GameRegistry.addRecipe(new ItemStack(UF.items.porkwich), "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_PORKCHOP);
+		GameRegistry.addRecipe(new ItemStack(UF.items.steakwich), "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_BEEF);
+		GameRegistry.addRecipe(new ItemStack(UF.items.fishwich), "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_FISH);
+		GameRegistry.addRecipe(new ItemStack(UF.items.chickenwich), "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_CHICKEN);
 		GameRegistry.addRecipe(new ItemStack(UF.items.eggwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', UF.items.friedegg });
-		GameRegistry.addRecipe(new ItemStack(UF.items.AppleCake), new Object[] { "AAA", "BEB", "CCC", 'A', UF.items.milkbottle, 'B', Items.APPLE, 'C', Items.WHEAT, 'E', Items.EGG  });
+		GameRegistry.addRecipe(new ItemStack(UF.items.AppleCake), "AAA", "BEB", "CCC", 'A', UF.items.milkbottle, 'B', Items.APPLE, 'C', Items.WHEAT, 'E', Items.EGG);
 		GameRegistry.addRecipe(new ItemStack(UF.items.ChocolateCake), new Object[] { "AAA", "BEB", "CCC", 'A', UF.items.milkbottle, 'B', new ItemStack(Items.DYE, 1, 3), 'C', Items.WHEAT, 'E', Items.EGG  });
 		GameRegistry.addRecipe(new ItemStack(UF.items.MagicCake), new Object[] { "AAA", "BEB", "CCC", 'A', UF.items.milkbottle, 'B', new ItemStack(Items.GOLDEN_APPLE, 1, 1), 'C', Items.WHEAT, 'E', Items.EGG  });
 		GameRegistry.addRecipe(new ItemStack(UF.items.MuttonSandwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', UF.items.MuttonCooked });
 
 		// 1.2
 		GameRegistry.addRecipe(new ItemStack(UF.items.SquidSandwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', UF.items.SquidTentacleCooked });
-		
+
 		// 1.4
 		GameRegistry.addRecipe(new ItemStack(UF.items.CaramelCake), new Object[] { "AAA", "BEB", "CCC", 'A', UF.items.milkbottle, 'B', UF.items.caramel, 'C', Items.WHEAT, 'E', Items.EGG  });
 		GameRegistry.addRecipe(new ItemStack(UF.items.CaramelCake), new Object[] { "AAA", "BEB", "CCC", 'A', Items.MILK_BUCKET, 'B', UF.items.caramel, 'C', Items.WHEAT, 'E', Items.EGG  });
@@ -39,7 +39,7 @@ public class UFRecipes
 		GameRegistry.addRecipe(new ItemStack(UF.items.ChocolateCake), new Object[] { "AAA", "BEB", "CCC", 'A', Items.MILK_BUCKET, 'B', new ItemStack(Items.DYE, 1, 3), 'C', Items.WHEAT, 'E', Items.EGG  });
 		GameRegistry.addRecipe(new ItemStack(UF.items.MagicCake), new Object[] { "AAA", "BEB", "CCC", 'A', Items.MILK_BUCKET, 'B', new ItemStack(Items.GOLDEN_APPLE, 1, 1), 'C', Items.WHEAT, 'E', Items.EGG  });
 		GameRegistry.addRecipe(new ItemStack(UF.items.CheeseSandwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', UF.items.Cheese });
-	
+
 		// 1.5
 		GameRegistry.addRecipe(new ItemStack(UF.items.MuttonSandwich), new Object[] { "#", "%", "#", '#', UF.items.breadslice, '%', Items.COOKED_MUTTON });
 	}

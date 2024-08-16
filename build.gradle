@@ -30,6 +30,7 @@ minecraft {
     version = "1.9.4-12.17.0.2317-1.9.4"
     runDir = "run"
 
+    makeObfSourceJar = false
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
@@ -83,27 +84,17 @@ processResources
             }
         }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.maven_group
-            artifactId project.archivesBaseName
-            version project.version
-            artifact jar
-        }
-    }
 
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+uploadArchives {
     repositories {
-        if (System.getenv("MAVEN_URL")) {
-            maven {
-                name = 'mavenLocal2'
-                url System.getenv("MAVEN_URL")
-                // Add repositories to publish to here.
-                // Notice: This block does NOT have the same function as the block in the top level.
-                // The repositories here will be used for publishing your artifact, not for
-                // retrieving dependencies.
-            }
+        mavenDeployer {
+            // Configure Maven repository URL
+            repository(url: uri(System.getenv("MAVEN_URL")))
+
+            // Set POM metadata
+            pom.groupId = project.maven_group
+            pom.artifactId = project.archivesBaseName
+            pom.version = project.version
         }
     }
 }

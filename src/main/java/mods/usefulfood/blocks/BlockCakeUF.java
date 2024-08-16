@@ -32,7 +32,7 @@ public class BlockCakeUF extends Block
     protected BlockCakeUF()
     {
         super(Material.CAKE);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(BITES, Integer.valueOf(0)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(BITES, 0));
         this.setTickRandomly(true);
     }
 
