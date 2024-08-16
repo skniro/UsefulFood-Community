@@ -30,12 +30,12 @@ public class UFBlocks {
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 		itemBlocks = new ArrayList<>();
-		AppleCake =  registerBlock(registry, new SpecialCake("applecakeblock", 18, 0.6F),"applecakeblock", UsefulFood.tabUsefulFood);
-		ChocolateCake =  registerBlock(registry, new SpecialCake("chocolatecakeblock", 12, 0.5F),"chocolatecakeblock", UsefulFood.tabUsefulFood);
-		MagicCake = registerBlock(registry, new MagicCake("magiccakeblock", 48, 0.5F),"magiccakeblock", UsefulFood.tabUsefulFood);
+		AppleCake =  registerBlock(registry, new SpecialCake("applecake", 18, 0.6F),"applecake", UsefulFood.tabUsefulFood);
+		ChocolateCake =  registerBlock(registry, new SpecialCake("chocolatecake", 12, 0.5F),"chocolatecake", UsefulFood.tabUsefulFood);
+		MagicCake = registerBlock(registry, new MagicCake("magiccake", 48, 0.5F),"magiccake", UsefulFood.tabUsefulFood);
 		
 		// 1.4
-		CaramelCake = registerBlock(registry, new SpecialCake("caramelcakeblock", 19, 0.8F),"caramelcakeblock", UsefulFood.tabUsefulFood);
+		CaramelCake = registerBlock(registry, new SpecialCake("caramelcake", 19, 0.8F),"caramelcake", UsefulFood.tabUsefulFood);
 
 	}
 
