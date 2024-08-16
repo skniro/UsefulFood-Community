@@ -16,7 +16,7 @@ public class UFClient extends UFServer {
 	{
 		ItemModelMesher imm = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 		
-		for (UFItem2Model o : UF.getItem2Models()) {
+		for (UFItem2Model o : UsefulFood.getItem2Models()) {
 			imm.register(o.item, 0, new ModelResourceLocation("usefulfood:" + o.name, "inventory"));
 		}
 	}

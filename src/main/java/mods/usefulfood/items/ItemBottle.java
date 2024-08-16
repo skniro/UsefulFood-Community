@@ -1,15 +1,13 @@
 package mods.usefulfood.items;
 
-import mods.usefulfood.UF;
+import mods.usefulfood.UsefulFood;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -26,7 +24,7 @@ public class ItemBottle extends ItemFoodUF {
 	public ItemBottle(String name, int foodlevel, float saturation, boolean removepoison) {
 		super(name, foodlevel, saturation, false);
 		this.setMaxStackSize(16);
-		this.setCreativeTab(UF.tabUsefulFood);
+		this.setCreativeTab(UsefulFood.tabUsefulFood);
 		this.foodlevel = foodlevel;
 		this.saturation = saturation;
 		this.removepoison = removepoison;
@@ -35,7 +33,7 @@ public class ItemBottle extends ItemFoodUF {
 	public ItemBottle(String name, int foodlevel, float saturation) {
 		super(name, foodlevel, saturation, false);
 		this.setMaxStackSize(16);
-		this.setCreativeTab(UF.tabUsefulFood);
+		this.setCreativeTab(UsefulFood.tabUsefulFood);
 		this.foodlevel = foodlevel;
 		this.saturation = saturation;
 	}
@@ -96,8 +94,9 @@ public class ItemBottle extends ItemFoodUF {
 	 * Called whenever this item is equipped and the right mouse button is
 	 * pressed. Args: itemStack, world, entityPlayer
 	 */
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
+		ItemStack itemStackIn = playerIn.getHeldItem(hand);
         if (playerIn.canEat(true))
         {
 			playerIn.setActiveHand(hand);

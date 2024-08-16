@@ -2,7 +2,7 @@ package mods.usefulfood.items;
 
 import java.util.List;
 
-import mods.usefulfood.UF;
+import mods.usefulfood.UsefulFood;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -17,7 +17,7 @@ public class ItemFoodDebug extends ItemUF {
 	
 	public ItemFoodDebug(String name) {
 		super(name);
-		this.setCreativeTab(UF.tabUsefulFood);
+		this.setCreativeTab(UsefulFood.tabUsefulFood);
 	}
 	
 	@SideOnly(Side.CLIENT)

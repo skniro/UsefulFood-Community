@@ -1,10 +1,8 @@
 package mods.usefulfood.items;
 
-import mods.usefulfood.UF;
-import net.minecraft.entity.player.EntityPlayer;
+import mods.usefulfood.UsefulFood;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public class ItemSoupUF extends ItemBowl {
 	int foodlevel;
@@ -13,7 +11,7 @@ public class ItemSoupUF extends ItemBowl {
 	public ItemSoupUF(String name, int var2, float var3) {
 		super(name, var2, var3, false);
 		this.setMaxStackSize(1);
-		this.setCreativeTab(UF.tabUsefulFood);
+		this.setCreativeTab(UsefulFood.tabUsefulFood);
 		this.foodlevel = var2;
 		this.saturation = var3;
 	}

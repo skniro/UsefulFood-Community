@@ -1,5 +1,6 @@
 package mods.usefulfood.blocks;
 
+import mods.usefulfood.UsefulFood;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +11,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,10 +27,10 @@ public class SpecialCake extends BlockCakeUF {
 		this.setTickRandomly(true);
 		this.setHardness(0.5F);
 		this.setSoundType(SoundType.CLOTH);
-		this.name = name;
+        this.setCreativeTab(UsefulFood.tabUsefulFood);
 		this.setUnlocalizedName(name);
-        ResourceLocation resourceLocation = new ResourceLocation("UsefulFood", name);
-		GameRegistry.register(this, resourceLocation);
+        //this.setRegistryName(name);
+		//GameRegistry.register(this, resourceLocation);
 	}
 
 	/**

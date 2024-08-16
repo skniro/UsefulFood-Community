@@ -118,7 +118,7 @@ public class BlockCakeUF extends Block
     /**
      * Called when a neighboring block changes.
      */
-    public void neighborChanged(IBlockState state,World worldIn, BlockPos pos, Block neighborBlock)
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block neighborBlock,BlockPos pos2)
     {
         if (!this.canBlockStay(worldIn, pos))
         {

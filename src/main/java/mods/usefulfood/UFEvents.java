@@ -2,7 +2,6 @@ package mods.usefulfood;
 
 import java.util.Random;
 
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -48,11 +47,11 @@ public class UFEvents {
 	        {
 	        	if (event.getEntityLiving().isBurning())
 				{
-					event.getEntity().dropItem(UF.items.SquidTentacleCooked, 1);
+					event.getEntity().dropItem(UsefulFood.items.SquidTentacleCooked, 1);
 				} 
 				else 
 				{
-					event.getEntity().dropItem(UF.items.SquidTentacleRaw, 1);
+					event.getEntity().dropItem(UsefulFood.items.SquidTentacleRaw, 1);
 				}
 	        }
 		}

@@ -1,7 +1,6 @@
 package mods.usefulfood;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class CreativeTabUF extends CreativeTabs 
@@ -12,7 +11,7 @@ public class CreativeTabUF extends CreativeTabs
 
 	@Override
     public ItemStack getIconItemStack() {
-		return new ItemStack(UF.items.MuttonRaw);
+		return new ItemStack(UsefulFood.items.MuttonRaw);
 	}
 	
 	@Override
@@ -22,6 +21,6 @@ public class CreativeTabUF extends CreativeTabs
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(UF.items.MuttonRaw);
+		return new ItemStack(UsefulFood.items.MuttonRaw);
 	}
 }
