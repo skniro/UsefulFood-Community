@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -81,10 +82,17 @@ public class BlockCakeUF extends Block
         return false;
     }
 
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        this.eatCake(worldIn, pos, state, playerIn);
-        return true;
+        if (!worldIn.isRemote)
+        {
+            return eatCake(worldIn, pos, state, playerIn);
+        }
+        else
+        {
+            ItemStack itemstack = playerIn.getHeldItem(hand);
+            return this.eatCake(worldIn, pos, state, playerIn) || itemstack.isEmpty();
+        }
     }
 
     public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn)
@@ -92,10 +100,17 @@ public class BlockCakeUF extends Block
         this.eatCake(worldIn, pos, worldIn.getBlockState(pos), playerIn);
     }
 
-    public void eatCake(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player)
+
+
+    public boolean eatCake(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player)
     {
         if (player.canEat(false))
         {
+            return false;
+        }
+        else
+        {
+            player.addStat(StatList.CAKE_SLICES_EATEN);
             player.getFoodStats().addStats(2, 0.1F);
             int i = ((Integer)state.getValue(BITES)).intValue();
 
@@ -107,6 +122,7 @@ public class BlockCakeUF extends Block
             {
                 worldIn.setBlockToAir(pos);
             }
+            return true;
         }
     }
 

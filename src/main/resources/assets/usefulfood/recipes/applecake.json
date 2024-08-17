@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "usefulfood:milkbottle"
+    },
+    {
+      "item": "usefulfood:milkbottle"
+    },
+    {
+      "item": "usefulfood:milkbottle"
+    }
+  ],
+  "result": {
+    "item": "usefulfood:applecake"
+  }
+}

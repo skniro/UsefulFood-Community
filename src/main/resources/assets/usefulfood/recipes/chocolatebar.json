@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        {
+            "item": "minecraft:dye",
+            "data": 3
+        },
+        {
+            "item": "usefulfood:milkbottle"
+        },
+        {
+            "item": "minecraft:sugar"
+        }
+    ],
+    "result": {
+        "item": "usefulfood:chocolatebar"
+    }
+}

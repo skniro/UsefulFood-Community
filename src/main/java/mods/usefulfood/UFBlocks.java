@@ -55,7 +55,7 @@ public class UFBlocks {
 
 	private static Block registerBlock(IForgeRegistry<Block> reg, Block block, String name, CreativeTabs tab) {
 		block.setRegistryName(name);
-		block.setUnlocalizedName(name);
+		block.setUnlocalizedName(UsefulFood.MOD_ID + "." + name);
 		if (tab != null) block.setCreativeTab(tab);
 
 		reg.register(block);
@@ -63,7 +63,7 @@ public class UFBlocks {
 		Item item = new ItemBlock(block);
 		item.setRegistryName(block.getRegistryName());
 		itemBlocks.add(item);
-
+		UsefulFood.getItem2Models().add(new UFItem2Model(item ,name));
 		return block;
 	}
 

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:speckled_melon"
+    },
+    {
+      "item": "minecraft:speckled_melon"
+    },
+    {
+      "item": "usefulfood:vanillaicecream"
+    },
+    {
+      "item": "minecraft:golden_apple",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "usefulfood:magicicecream"
+  }
+}
