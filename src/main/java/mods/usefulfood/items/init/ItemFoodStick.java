@@ -1,7 +1,6 @@
-package mods.usefulfood.items;
+package mods.usefulfood.items.init;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

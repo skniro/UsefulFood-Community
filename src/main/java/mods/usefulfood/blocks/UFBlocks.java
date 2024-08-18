@@ -1,14 +1,14 @@
-package mods.usefulfood;
+package mods.usefulfood.blocks;
 
-import mods.usefulfood.blocks.BlockCakeUF;
-import mods.usefulfood.blocks.MagicCake;
-import mods.usefulfood.blocks.SpecialCake;
+import mods.usefulfood.UsefulFood;
+import mods.usefulfood.blocks.init.MagicCake;
+import mods.usefulfood.blocks.init.SpecialCake;
+import mods.usefulfood.items.init.ItemCakeUF;
+import mods.usefulfood.items.init.ItemMagicCake;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -30,12 +30,12 @@ public class UFBlocks {
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 		itemBlocks = new ArrayList<>();
-		AppleCake =  registerBlock(registry, new SpecialCake("applecake", 18, 0.6F),"applecake", UsefulFood.tabUsefulFood);
-		ChocolateCake =  registerBlock(registry, new SpecialCake("chocolatecake", 12, 0.5F),"chocolatecake", UsefulFood.tabUsefulFood);
-		MagicCake = registerBlock(registry, new MagicCake("magiccake", 48, 0.5F),"magiccake", UsefulFood.tabUsefulFood);
+		AppleCake =  registerCakeBlock(registry, new SpecialCake("applecake", 18, 0.6F),"applecake", UsefulFood.tabUsefulFood);
+		ChocolateCake =  registerCakeBlock(registry, new SpecialCake("chocolatecake", 12, 0.5F),"chocolatecake", UsefulFood.tabUsefulFood);
+		MagicCake = registerMagicCakeBlock(registry, new MagicCake("magiccake", 48, 0.5F),"magiccake", UsefulFood.tabUsefulFood);
 		
 		// 1.4
-		CaramelCake = registerBlock(registry, new SpecialCake("caramelcake", 19, 0.8F),"caramelcake", UsefulFood.tabUsefulFood);
+		CaramelCake = registerCakeBlock(registry, new SpecialCake("caramelcake", 19, 0.8F),"caramelcake", UsefulFood.tabUsefulFood);
 
 	}
 
@@ -46,24 +46,29 @@ public class UFBlocks {
 			reg.register(i);
 	}
 
-	public static Block[] reedBlocks = {
-			AppleCake,
-			ChocolateCake,
-			MagicCake,
-			CaramelCake
-	};
-
-	private static Block registerBlock(IForgeRegistry<Block> reg, Block block, String name, CreativeTabs tab) {
+	private static Block registerCakeBlock(IForgeRegistry<Block> reg, Block block, String name, CreativeTabs tab) {
 		block.setRegistryName(name);
 		block.setUnlocalizedName(UsefulFood.MOD_ID + "." + name);
 		if (tab != null) block.setCreativeTab(tab);
 
 		reg.register(block);
 
-		Item item = new ItemBlock(block);
+		Item item = new ItemCakeUF(block, name);
 		item.setRegistryName(block.getRegistryName());
 		itemBlocks.add(item);
-		UsefulFood.getItem2Models().add(new UFItem2Model(item ,name));
+		return block;
+	}
+
+	private static Block registerMagicCakeBlock(IForgeRegistry<Block> reg, Block block, String name, CreativeTabs tab) {
+		block.setRegistryName(name);
+		block.setUnlocalizedName(UsefulFood.MOD_ID + "." + name);
+		if (tab != null) block.setCreativeTab(tab);
+
+		reg.register(block);
+
+		Item item = new ItemMagicCake(block,name);
+		item.setRegistryName(block.getRegistryName());
+		itemBlocks.add(item);
 		return block;
 	}
 

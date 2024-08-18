@@ -51,6 +51,7 @@ minecraft {
     runs {
         client {
             workingDirectory file("run")
+            ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Client'
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
@@ -66,6 +67,8 @@ minecraft {
         }
 
         server {
+            workingDirectory project.file('run')
+            ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Server'
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'

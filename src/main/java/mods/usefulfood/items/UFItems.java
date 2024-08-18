@@ -1,19 +1,18 @@
-package mods.usefulfood;
+package mods.usefulfood.items;
 
-import mods.usefulfood.items.ItemBottle;
-import mods.usefulfood.items.ItemBowl;
-import mods.usefulfood.items.ItemCheese;
-import mods.usefulfood.items.ItemFoodDebug;
-import mods.usefulfood.items.ItemFoodStick;
-import mods.usefulfood.items.ItemFoodUF;
-import mods.usefulfood.items.ItemJuice;
-import mods.usefulfood.items.ItemMagicAppleJuice;
-import mods.usefulfood.items.ItemMagicCake;
-import mods.usefulfood.items.ItemMagicFruitSalad;
-import mods.usefulfood.items.ItemMagicIceCream;
-import mods.usefulfood.items.ItemReedUF;
-import mods.usefulfood.items.ItemSoupUF;
-import mods.usefulfood.items.ItemTea;
+import mods.usefulfood.UsefulFood;
+import mods.usefulfood.items.init.ItemBottle;
+import mods.usefulfood.items.init.ItemBowl;
+import mods.usefulfood.items.init.ItemCheese;
+import mods.usefulfood.items.init.ItemFoodDebug;
+import mods.usefulfood.items.init.ItemFoodStick;
+import mods.usefulfood.items.init.ItemFoodUF;
+import mods.usefulfood.items.init.ItemJuice;
+import mods.usefulfood.items.init.ItemMagicAppleJuice;
+import mods.usefulfood.items.init.ItemMagicFruitSalad;
+import mods.usefulfood.items.init.ItemMagicIceCream;
+import mods.usefulfood.items.init.ItemSoupUF;
+import mods.usefulfood.items.init.ItemTea;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -146,8 +145,6 @@ public class UFItems {
 
 
 		// 1.0
-		MuttonCooked = registerItem(registry, new ItemFoodUF("CookedMutton", 6, 0.8F, true),"cookedmutton", UsefulFood.tabUsefulFood);
-		MuttonRaw = registerItem(registry, new ItemFoodUF("RawMutton", 3, 0.3F, true),"rawmutton", UsefulFood.tabUsefulFood);
 		MuttonSandwich = registerItem(registry, new ItemFoodUF("MuttonSandwich", 8, 1.0F, true),"muttonsandwich", UsefulFood.tabUsefulFood);
 
 		// 1.1

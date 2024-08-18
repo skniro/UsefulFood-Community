@@ -1,5 +1,7 @@
-package mods.usefulfood;
+package mods.usefulfood.client;
 
+import mods.usefulfood.UFServer;
+import mods.usefulfood.UsefulFood;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

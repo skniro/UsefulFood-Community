@@ -1,4 +1,4 @@
-package mods.usefulfood.blocks;
+package mods.usefulfood.blocks.init;
 
 import java.util.Random;
 
@@ -23,8 +23,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 public class BlockCakeUF extends Block
 {
@@ -106,12 +104,7 @@ public class BlockCakeUF extends Block
     {
         if (player.canEat(false))
         {
-            return false;
-        }
-        else
-        {
             player.addStat(StatList.CAKE_SLICES_EATEN);
-            player.getFoodStats().addStats(2, 0.1F);
             int i = ((Integer)state.getValue(BITES)).intValue();
 
             if (i < 6)
@@ -122,8 +115,8 @@ public class BlockCakeUF extends Block
             {
                 worldIn.setBlockToAir(pos);
             }
-            return true;
         }
+        return true;
     }
 
     public boolean canPlaceBlockAt(World worldIn, BlockPos pos)

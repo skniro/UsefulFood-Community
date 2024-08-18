@@ -1,7 +1,7 @@
-package mods.usefulfood.items;
+package mods.usefulfood.items.init;
 
 import mods.usefulfood.UsefulFood;
-import mods.usefulfood.UFItem2Model;
+import mods.usefulfood.client.UFItem2Model;
 import net.minecraft.item.ItemFood;
 
 public class ItemFoodUF extends ItemFood {

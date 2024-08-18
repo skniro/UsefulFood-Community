@@ -1,4 +1,4 @@
-package mods.usefulfood.items;
+package mods.usefulfood.items.init;
 
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;

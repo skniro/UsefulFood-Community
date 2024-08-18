@@ -1,4 +1,4 @@
-package mods.usefulfood.items;
+package mods.usefulfood.items.init;
 
 import mods.usefulfood.UsefulFood;
 import net.minecraft.entity.EntityLivingBase;

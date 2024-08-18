@@ -1,7 +1,7 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "#GK",
+        "#G ",
         " B "
     ],
     "key": {
@@ -11,9 +11,6 @@
         },
         "G": {
             "item": "minecraft:speckled_melon"
-        },
-        "K": {
-            "item": "minecraft:glow_berries"
         },
         "B": {
             "item": "minecraft:bowl"

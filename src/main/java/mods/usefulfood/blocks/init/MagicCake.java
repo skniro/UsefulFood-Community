@@ -1,4 +1,4 @@
-package mods.usefulfood.blocks;
+package mods.usefulfood.blocks.init;
 
 import java.util.Random;
 
@@ -23,7 +23,7 @@ public class MagicCake extends SpecialCake {
 	}
 
 	@Override
-	public void eatCake(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player)
+	public boolean eatCake(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player)
     {
 		if (player.canEat(false))
         {
@@ -44,6 +44,7 @@ public class MagicCake extends SpecialCake {
                 worldIn.setBlockToAir(pos);
             }
         }
+        return true;
     }
 	
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)

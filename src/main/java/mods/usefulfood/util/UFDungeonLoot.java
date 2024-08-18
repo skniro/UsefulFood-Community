@@ -1,5 +1,6 @@
-package mods.usefulfood;
+package mods.usefulfood.util;
 
+import mods.usefulfood.items.UFItems;
 import net.minecraft.item.ItemStack;
 /*import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;*/

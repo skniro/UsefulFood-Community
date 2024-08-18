@@ -1,8 +1,8 @@
-package mods.usefulfood;
+package mods.usefulfood.util;
 
 import com.mrcrayfish.furniture.api.FurnitureRegister;
 
-import net.minecraft.init.Blocks;
+import mods.usefulfood.items.UFItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,7 +23,6 @@ public class UFRecipes
     	AddSmeltingRecipe(Items.MELON_SEEDS, new ItemStack(UFItems.RoastedSeeds));
     	AddSmeltingRecipe(Items.EGG , new ItemStack(UFItems.friedegg));
     	AddSmeltingRecipe(UFItems.marshmallow, new ItemStack(UFItems.cmarshmallow));
-    	AddSmeltingRecipe(UFItems.MuttonRaw, new ItemStack(UFItems.MuttonCooked));
 		
 		// 1.2
     	AddSmeltingRecipe(UFItems.SquidTentacleRaw, new ItemStack(UFItems.SquidTentacleCooked));

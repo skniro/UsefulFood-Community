@@ -1,4 +1,4 @@
-package mods.usefulfood;
+package mods.usefulfood.client;
 
 import net.minecraft.item.Item;
 

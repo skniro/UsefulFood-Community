@@ -1,4 +1,4 @@
-package mods.usefulfood.items;
+package mods.usefulfood.items.init;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMagicCake extends ItemReedUF
+public class ItemMagicCake extends ItemCakeUF
 {
 	public ItemMagicCake(Block var2, String name) {
 		super(var2, name);

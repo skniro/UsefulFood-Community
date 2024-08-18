@@ -1,4 +1,4 @@
-package mods.usefulfood.items;
+package mods.usefulfood.items.init;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;

@@ -3,6 +3,11 @@ package mods.usefulfood;
 import java.util.ArrayList;
 
 
+import mods.usefulfood.blocks.UFBlocks;
+import mods.usefulfood.client.UFItem2Model;
+import mods.usefulfood.items.UFItems;
+import mods.usefulfood.util.CreativeTabUF;
+import mods.usefulfood.util.UFRecipes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -15,7 +20,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(modid = UsefulFood.MOD_ID, name = "UsefulFood", version = "1.5.0")
 public class UsefulFood {
-	@SidedProxy(clientSide="mods.usefulfood.UFClient", serverSide="mods.usefulfood.UFServer")
+	@SidedProxy(clientSide="mods.usefulfood.client.UFClient", serverSide="mods.usefulfood.UFServer")
 	public static UFServer proxy;
 	public static final String MOD_ID = "usefulfood";
 	public static Logger logger;

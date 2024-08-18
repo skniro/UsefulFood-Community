@@ -1,7 +1,8 @@
-package mods.usefulfood;
+package mods.usefulfood.util;
 
 import java.util.Random;
 
+import mods.usefulfood.UsefulFood;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

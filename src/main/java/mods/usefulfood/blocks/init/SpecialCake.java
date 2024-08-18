@@ -1,4 +1,4 @@
-package mods.usefulfood.blocks;
+package mods.usefulfood.blocks.init;
 
 import mods.usefulfood.UsefulFood;
 import net.minecraft.block.SoundType;
@@ -36,15 +36,17 @@ public class SpecialCake extends BlockCakeUF {
 	/**
 	 * Heals the player and removes a slice from the cake.
 	 */
-	
+
+
 	@Override
-	public void eatCake(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player)
+	public boolean eatCake(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player)
     {
         if (player.canEat(false))
         {
             player.getFoodStats().addStats(foodlevel, saturation);
             int i = ((Integer)state.getValue(BITES)).intValue();
 
+            player.getFoodStats().addStats(foodlevel, saturation);
             worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
             if (i < 6)
             {
@@ -55,6 +57,7 @@ public class SpecialCake extends BlockCakeUF {
                 worldIn.setBlockToAir(pos);
             }
         }
+        return true;
     }
 	
     @SideOnly(Side.CLIENT)
