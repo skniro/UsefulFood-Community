@@ -58,37 +58,42 @@ public class ItemBottle extends ItemFoodUF {
     {
         return EnumAction.DRINK;
     }
-	
+
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase playerIn)
-    {
-		EntityPlayer player = (EntityPlayer) playerIn;
-		if (!player.capabilities.isCreativeMode)
-        {
-            stack.shrink(1);
-        }
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+		if (!(entityLiving instanceof EntityPlayer)) {
+			return stack;
+		}
+		EntityPlayer player = (EntityPlayer) entityLiving;
+
+		if (!player.capabilities.isCreativeMode) {
+			stack.shrink(1);
+		}
 
 		player.addStat(StatList.getObjectUseStats(this));
 
-        if (!player.capabilities.isCreativeMode)
-        {
-            if (stack.getCount() <= 0)
-            {
-                return new ItemStack(Items.GLASS_BOTTLE);
-            }
+		if (this.removepoison) {
+			player.removePotionEffect(MobEffects.POISON);
+		}
 
-            player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-        }
-        
-        if(this.removepoison) {
-        	player.removePotionEffect(MobEffects.POISON);
-        }
-        
-        player.getFoodStats().addStats(this, stack);
-        worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
-        this.onFoodEaten(stack, worldIn, player);
-        return stack;
-    }
+		player.getFoodStats().addStats(this.foodlevel, this.saturation);
+
+		worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP,
+				SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
+
+		this.onFoodEaten(stack, worldIn, player);
+
+		if (!player.capabilities.isCreativeMode) {
+			if (stack.isEmpty()) {
+				return new ItemStack(Items.GLASS_BOTTLE);
+			} else {
+				player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
+			}
+		}
+
+		return stack;
+	}
+
 
 	/**
 	 * Called whenever this item is equipped and the right mouse button is

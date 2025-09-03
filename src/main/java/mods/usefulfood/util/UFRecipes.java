@@ -26,7 +26,8 @@ public class UFRecipes
 		
 		// 1.2
     	AddSmeltingRecipe(UFItems.SquidTentacleRaw, new ItemStack(UFItems.SquidTentacleCooked));
-		
+		AddSmeltingRecipe(Items.BAKED_POTATO, new ItemStack(UFItems.FrenchFries));
+
 		// 1.4
     	AddSmeltingRecipe(UFItems.milkbottle, new ItemStack(UFItems.HotMilkBottle));
     	AddSmeltingRecipe(UFItems.PanCakeDough, new ItemStack(UFItems.PanCake));

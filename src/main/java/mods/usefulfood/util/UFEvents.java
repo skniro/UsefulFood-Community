@@ -1,60 +1,49 @@
 package mods.usefulfood.util;
 
-import java.util.Random;
-
-import mods.usefulfood.UsefulFood;
-import net.minecraft.entity.passive.EntitySquid;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import mods.usefulfood.items.UFItems;
+import net.minecraft.world.storage.loot.*;
+import net.minecraft.world.storage.loot.conditions.LootCondition;
+import net.minecraft.world.storage.loot.functions.LootFunction;
+import net.minecraft.world.storage.loot.functions.SetCount;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class UFEvents {
-	
+
 	@SubscribeEvent
-	public void LivingDropsEvent(LivingDropsEvent event) 
-	{
-		/*
-		if (event.entity instanceof EntitySheep) 
-		{
-			if (!event.entityLiving.isChild()) 
-			{
-				Random random = new Random();
-				
-				int var3 = random.nextInt(2) + 1 + random.nextInt(1 + event.lootingLevel);
-				int var4;
-				
-				for (var4 = 0; var4 < var3; ++var4)
-		        {
-					if (event.entityLiving.isBurning()) 
-					{
-						event.entity.dropItem(UF.items.MuttonCooked, 1);
-					} 
-					else 
-					{
-						event.entity.dropItem(UF.items.MuttonRaw, 1);
-					}
-				}
-			}
-		}
-		*/
-		
-		if (event.getEntity() instanceof EntitySquid)
-		{
-			Random random = new Random();
-			
-			int var3 = random.nextInt(4) + 1 + random.nextInt(1 + event.getLootingLevel());
-			int var4;
-			
-	        for (var4 = 0; var4 < var3; ++var4)
-	        {
-	        	if (event.getEntityLiving().isBurning())
-				{
-					event.getEntity().dropItem(UsefulFood.items.SquidTentacleCooked, 1);
-				} 
-				else 
-				{
-					event.getEntity().dropItem(UsefulFood.items.SquidTentacleRaw, 1);
-				}
-	        }
+	public static void onLootTableLoad(LootTableLoadEvent event) {
+		if (event.getName().equals(LootTableList.ENTITIES_SQUID)) {
+			LootEntryItem rawTentacle = new LootEntryItem(
+                    UFItems.SquidTentacleRaw,
+					1,
+					0,
+					new LootFunction[]{
+							new SetCount(new LootCondition[0], new RandomValueRange(1, 1))
+					},
+					new LootCondition[0],
+					"usefulfood:squid_drop"
+			);
+
+			LootEntryItem cookedTentacle = new LootEntryItem(
+					UFItems.SquidTentacleCooked,
+					1,
+					0,
+					new LootFunction[]{
+							new SetCount(new LootCondition[0], new RandomValueRange(1, 2))
+					},
+					new LootCondition[]{ new EntityOnFire(true) },
+					"usefulfood:squid_cooked"
+			);
+
+			LootPool pool = new LootPool(
+					new LootEntry[]{rawTentacle, cookedTentacle},
+					new LootCondition[0],
+					new RandomValueRange(1),
+					new RandomValueRange(0),
+					"usefulfood:squid_pool"
+			);
+
+			event.getTable().addPool(pool);
 		}
 	}
 }
